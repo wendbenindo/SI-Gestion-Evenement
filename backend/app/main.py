@@ -1,4 +1,9 @@
 from fastapi import FastAPI
+from .database import engine
+from . import models
+
+# Créer les tables automatiquement au démarrage
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Event Management API",
