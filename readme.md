@@ -28,6 +28,8 @@ Application web permettant de publier des événements et de gérer les inscript
 
 ```bash
 cd backend
+py -m venv venv
+# OU
 python -m venv venv
 
 # Windows
