@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getEvents } from '../services/api';
+import { getEvents, getEventRegistrations } from '../services/api';
 
 function EventList() {
   const [events, setEvents] = useState([]);
