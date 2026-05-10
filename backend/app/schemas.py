@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, Field, ConfigDict
+from pydantic import BaseModel, EmailStr, Field, ConfigDict, computed_field
 from datetime import datetime
 from typing import Optional
 
@@ -17,6 +17,7 @@ class EventCreate(EventBase):
 class EventResponse(EventBase):
     id: int
     created_at: datetime
+    registrations_count: int = 0
     
     model_config = ConfigDict(from_attributes=True)
 
