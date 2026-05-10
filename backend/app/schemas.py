@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from datetime import datetime
 from typing import Optional
 
@@ -16,18 +16,15 @@ class EventCreate(EventBase):
 
 class EventResponse(EventBase):
     id: int
-    createdAt: datetime
+    created_at: datetime
     
-    class Config:
-        from_attributes = True
-        # Alias pour convertir snake_case -> camelCase
-        populate_by_name = True
+    model_config = ConfigDict(from_attributes=True)
 
 # REGISTRATION SCHEMAS 
 
 class RegistrationBase(BaseModel):
-    firstName: str
-    lastName: str
+    first_name: str
+    last_name: str
     email: EmailStr
 
 class RegistrationCreate(RegistrationBase):
@@ -35,9 +32,7 @@ class RegistrationCreate(RegistrationBase):
 
 class RegistrationResponse(RegistrationBase):
     id: int
-    eventId: int
-    registeredAt: datetime
+    event_id: int
+    registered_at: datetime
     
-    class Config:
-        from_attributes = True
-        populate_by_name = True
+    model_config = ConfigDict(from_attributes=True)
