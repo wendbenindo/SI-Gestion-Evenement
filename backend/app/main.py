@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, Query
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import Optional, List
 from .database import engine, get_db
@@ -11,6 +12,15 @@ app = FastAPI(
     title="Event Management API",
     description="API pour la gestion d'événements et d'inscriptions",
     version="1.0.0"
+)
+
+# Configuration CORS - Plus permissive
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permet toutes les origines (pour le dev)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.get("/")
